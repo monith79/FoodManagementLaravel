@@ -23,15 +23,22 @@ class CuisineController extends Controller
         $request->validate([
             'name' => 'required|max:255',
             'description' => 'nullable',
+            'categories' => 'nullable',
             'price' => 'required|numeric|min:0',
             'spicy_level' => 'nullable',
             'dietary_option' => 'nullable',
             'is_available' => 'required|boolean',
         ]);
-    
+
+        // $cuisines = new Cuisine();
+        // $cuisines->name = empty($request->name) ? null : $request->name;
+
         Cuisine::create([
             'name' => $request->name,
             'description' => $request->description,
+            'categories' => $request->categories,
+            'spicy_level' => $request->spicy_level,
+            'dietary_option' => $request->dietary_option,
             'price' => $request->price,
         ]);
     
@@ -51,7 +58,8 @@ class CuisineController extends Controller
         // Validate the input
         $request->validate([
             'name' => 'required|max:255|unique:cuisines,name,' . $cuisine->id,
-            'description' => 'nullable',
+            'description' => 'nullable|string',
+            'categories' => 'nullable|string',
             'price' => 'required|numeric|min:0',  // Validate price as numeric
             'image' => 'nullable|image|mimes:jpg,jpeg,png',
             'spicy_level' => 'nullable', // Add validation for spicy level
@@ -64,8 +72,11 @@ class CuisineController extends Controller
         // Explicitly update fields
         $cuisine->name = $request->input('name');
         $cuisine->description = $request->input('description');
+        $cuisine->categories = $request->input('categories');
         $cuisine->price = $request->input('price');  // Explicitly update price
-
+        $cuisine->spicy_level = $request ->input('spicy_level');
+        $cuisine->dietary_option = $request -> input('dietary_option');
+        $cuisine->is_available = $request -> input('is_available');
         // Check if there's an uploaded image
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('cuisines', 'public');

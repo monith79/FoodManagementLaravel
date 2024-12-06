@@ -9,6 +9,7 @@
             <tr>
                 <th>#</th>
                 <th>Name</th>
+                <th>Categories</th>
                 <th>Description</th>
                 <th>Price</th> <!-- Add Price column here -->
                 <th>Actions</th>
@@ -20,6 +21,7 @@
             <tr>
                 <td>{{ $cuisine->id }}</td>
                 <td>{{ $cuisine->name }}</td>
+                <td>{{ $cuisine->categories }}</td>
                 <td>{{ $cuisine->description }}</td>
                 <td>${{ number_format($cuisine->price, 2) }}</td>
                 <td>

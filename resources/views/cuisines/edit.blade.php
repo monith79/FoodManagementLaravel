@@ -22,6 +22,12 @@
                     <input type="text" name="name" id="name" class="form-control" value="{{ old('name', $cuisine->name) }}" required>
                     @error('name') <div class="text-danger">{{ $message }}</div> @enderror
                 </div>
+                 <!-- Catagory -->
+                <div class="mb-3">
+                    <label for="categories" class="form-label">Catagory</label>
+                    <input type="text" name="categories" id="categories" class="form-control" value="{{ old('categories', $cuisine->categories) }}" required>
+                    @error('categories') <div class="text-danger">{{ $message }}</div> @enderror
+                </div>
 
                 <!-- Description -->
                 <div class="mb-3">
@@ -50,6 +56,30 @@
                     @endif
                 </div>
 
+                <div class="form-group">
+                    <label for="spicy_level">Spicy Level</label>
+                    <select name="spicy_level" id="spicy_level" class="form-control">
+                        <option value="Mild" {{ $cuisine->spicy_level == 'Mild' ? 'selected' : '' }}>Mild</option>
+                        <option value="Medium" {{ $cuisine->spicy_level == 'Medium' ? 'selected' : '' }}>Medium</option>
+                        <option value="Hot" {{ $cuisine->spicy_level == 'Hot' ? 'selected' : '' }}>Hot</option>
+                    </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="dietary_option">Dietary Option</label>
+                        <select name="dietary_option" id="dietary_option" class="form-control">
+                            <option value="Vegan" {{ $cuisine->dietary_option == 'Vegan' ? 'selected' : '' }}>Vegan</option>
+                            <option value="Vegetarian" {{ $cuisine->dietary_option == 'Vegetarian' ? 'selected' : '' }}>Vegetarian</option>
+                            <option value="Gluten-Free" {{ $cuisine->dietary_option == 'Gluten-Free' ? 'selected' : '' }}>Gluten-Free</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="is_available">Available</label>
+                        <select name="is_available" id="is_available" class="form-control">
+                            <option value="1" {{ $cuisine->is_available ? 'selected' : '' }}>Yes</option>
+                            <option value="0" {{ !$cuisine->is_available ? 'selected' : '' }}>No</option>
+                        </select>
+                    </div>
+
                 <!-- Submit Button -->
                 <div class="mb-3">
                     <button type="submit" class="btn btn-primary">Update Cuisine</button>
@@ -59,29 +89,7 @@
 
     </form>
 
-    <div class="form-group">
-    <label for="spicy_level">Spicy Level</label>
-    <select name="spicy_level" id="spicy_level" class="form-control">
-        <option value="Mild" {{ $cuisine->spicy_level == 'Mild' ? 'selected' : '' }}>Mild</option>
-        <option value="Medium" {{ $cuisine->spicy_level == 'Medium' ? 'selected' : '' }}>Medium</option>
-        <option value="Hot" {{ $cuisine->spicy_level == 'Hot' ? 'selected' : '' }}>Hot</option>
-    </select>
-    </div>
-    <div class="form-group">
-        <label for="dietary_option">Dietary Option</label>
-        <select name="dietary_option" id="dietary_option" class="form-control">
-            <option value="Vegan" {{ $cuisine->dietary_option == 'Vegan' ? 'selected' : '' }}>Vegan</option>
-            <option value="Vegetarian" {{ $cuisine->dietary_option == 'Vegetarian' ? 'selected' : '' }}>Vegetarian</option>
-            <option value="Gluten-Free" {{ $cuisine->dietary_option == 'Gluten-Free' ? 'selected' : '' }}>Gluten-Free</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="is_available">Available</label>
-        <select name="is_available" id="is_available" class="form-control">
-            <option value="1" {{ $cuisine->is_available ? 'selected' : '' }}>Yes</option>
-            <option value="0" {{ !$cuisine->is_available ? 'selected' : '' }}>No</option>
-        </select>
-    </div>
+
 
 </div>
 @endsection
