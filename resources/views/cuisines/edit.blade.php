@@ -32,7 +32,7 @@
                 <!-- Description -->
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea name="description" id="description" class="form-control" rows="4">{{ old('description', $cuisine->description) }}</textarea>
+                    <input name="description" id="description" class="form-control" rows="4">{{ old('description', $cuisine->description) }}</input>
                     @error('description') <div class="text-danger">{{ $message }}</div> @enderror
                 </div>
 
