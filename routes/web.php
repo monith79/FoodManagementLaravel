@@ -37,5 +37,7 @@ Route::resource('cuisines', CuisineController::class);
 Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
+Route::put('/cuisines/{cuisine}', [CuisineController::class, 'update'])->name('cuisines.update');
+
 
 

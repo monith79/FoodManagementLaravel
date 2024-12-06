@@ -39,6 +39,8 @@
                         <input type="hidden" name="quantity" value="1">
                         <button class="btn btn-primary btn-sm">Add to Cart</button>
                     </form>
+
+                    
                 </td>
             </tr>
             @endforeach
